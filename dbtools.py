@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 #coding:utf-8
+# mysql and mongodb table import export
+
 import os
 import json
 import string
