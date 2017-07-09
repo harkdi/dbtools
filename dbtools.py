@@ -5,7 +5,6 @@
 import os
 import json
 import string
-#import getpass
 import subprocess
 import sys
 reload(sys)
