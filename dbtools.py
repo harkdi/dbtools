@@ -84,7 +84,7 @@ def export_mongodb(ENV, db_name, tab_name):
     export_cmd="/usr/bin/mongoexport -h %s -d %s -c %s -o %s" % \
                 (mongo_ip, db_name, tab_name, files)
     subprocess.call('%s%s "%s"'  % ('ssh ', proxyIP, export_cmd ), shell=True)
-    ##如果是控制主机,则跳过复制
+    ##如果是控制主机,则跳过复制 当前控制主机在预生产
     if ENV != 'pre':
         subprocess.call('%s%s:%s %s' % ('scp ', proxyIP, files, dir1), shell=True)
 
