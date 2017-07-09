@@ -69,8 +69,7 @@ def mysql_env_to_env(source_env, target_env, db_name, tab_name, rename=0):
         import_mysql(target_env, db_name, tab_name, rename)
 
 
-
-#---Import and export MongoDB coll------------------------------------------------------------------
+#---Import and export MongoDB coll----------------------------------------------------------
 def export_mongodb(ENV, db_name, tab_name):
     proxyIP = robotConf[ENV]["proxyIP"]
     mongo_ip=robotConf[ENV]["mongodb"][0]
@@ -122,9 +121,9 @@ _env={'1': 'test', '2': 'pre', '3': 'pro'}
 menu_list={
 "db_type":
 """
------------------------------------------
-                  dbtools
------------------------------------------
+----------------------------------------------------
+                     DBtools
+----------------------------------------------------
   1 MySQL
   2 MongoDB
   q Exit
@@ -133,7 +132,7 @@ Please select the number: """,
 
 "mysql_db_menu":
 """
------------------------------------------
+----------------------------------------------------
   1 export mysql table
   2 import mysql table
   3 Cross-environment migration mysql table
@@ -143,7 +142,7 @@ Please select the number: """,
 
 "mongodb_menu":
 """
------------------------------------------
+----------------------------------------------------
   1 export mongodb collection
   2 import mongodb collection
   3 Cross-environment migration mongodb collection
@@ -152,13 +151,15 @@ Please select the number: """,
 Please select the number: """,
 
 "env_menu": 
-"""----------------------------------------
+"""
+---------------------------------------------------
   1 test     2 pre     3 pro
   
 Please select the number: """,
 
 "source_env_menu": 
-"""-----------------------------------------------------
+"""
+----------------------------------------------------
   1 test     2 pre     3 pro
 
 Please select the "source" environment : """,
@@ -249,17 +250,17 @@ def mongodb_page():
         choose=raw_input(menu_list["mongodb_menu"]).strip()
         if choose == '1':
             env = _env[raw_input(menu_list["env_menu"]).strip()]
-            db_name = raw_input("Please enter a database name: ").strip()
-            tab_name = raw_input("Please enter a collection name: ").strip()
+            db_name = raw_input("Please enter database name: ").strip()
+            tab_name = raw_input("Please enter collection name: ").strip()
             export_mongodb(env, db_name, tab_name)
         
         elif choose == "2":
             env = _env[raw_input(menu_list["env_menu"]).strip()]
-            db_name = raw_input("Please enter a database name: ").strip()
-            tab_name = raw_input("Please enter a collection name: ").strip()
+            db_name = raw_input("Please enter database name: ").strip()
+            tab_name = raw_input("Please enter collection name: ").strip()
             rename_status=raw_input("Whether you need to rename y/n: ").strip()
             if rename_status == 'y':
-                rename = raw_input("Please enter a new name: ").strip()
+                rename = raw_input("Please enter new name: ").strip()
                 import_mongodb(env, db_name, tab_name, rename)
             else:
                 import_mongodb(env, db_name, tab_name)
@@ -268,11 +269,11 @@ def mongodb_page():
             while True:
                 source_env = _env[raw_input(menu_list["source_env_menu"]).strip()]
                 target_env = _env[raw_input(menu_list["target_env_menu"]).strip()]
-                db_name = raw_input("Please enter a database name: ").strip()
-                tab_name = raw_input("Please enter a collection name: ").strip()
+                db_name = raw_input("Please enter database name: ").strip()
+                tab_name = raw_input("Please enter collection name: ").strip()
                 rename_status=raw_input("Whether you need to rename y/n: ").strip()
                 if rename_status == 'y':
-                    rename = raw_input("Please enter a new name: ").strip()
+                    rename = raw_input("Please enter new name: ").strip()
                 else:
                     rename = 0
 
@@ -293,5 +294,4 @@ def mongodb_page():
 #-----------------------------------------------------------------------------------------------
 if __name__ == '__main__':
     home_page()
-
 
