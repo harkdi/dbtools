@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#coding:utf-8
+# coding: utf-8
 
 import os
 import json
@@ -152,7 +152,7 @@ Please select the number: """,
 
 "env_menu": 
 """
----------------------------------------------------
+----------------------------------------------------
   1 test     2 pre     3 pro
   
 Please select the number: """,
